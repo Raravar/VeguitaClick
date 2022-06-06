@@ -1,2 +1,2 @@
 # VeguitaClick
-Sistema de gestiçon y ventas
+Sistema de gestión y ventas
