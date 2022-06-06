@@ -1,0 +1,48 @@
+{%  extends 'core/base.html' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/productos.jpg' %}{% endblock %}
+
+{% block headers %} 
+<h1>Productos</h1>
+
+{% endblock %}
+
+{% block content %}
+	      <!-- Frutas -->
+	      <div class="row project">  	
+            <div class="col-lg-3 col-md-4 offset-lg-1">
+                <img class="img-fluid" src="{% static 'core/img/frutashd.jpg' %}" alt="">
+            </div>
+          <div class="col-lg-7 col-md-8">
+                <h2 class="section-heading title">Frutas</h2>   
+            <p>¿Andas en búsqueda de las mejores frutas de la temporada? Pues has llegado al lugar indicado. En VeguitaClick nos aseguramos de ofrecer las frutas de mayor calidad del País.</p>
+            <p><a href="http://google.com">Más información</a></p>
+            </div>
+        </div>
+        <!-- Verduras -->
+        <div class="row project">  	
+            <div class="col-lg-3 col-md-4 offset-lg-1">
+                <img class="img-fluid" src="{% static 'core/img/verdura.jpg' %}" alt="">
+            </div>
+          <div class="col-lg-7 col-md-8">
+                <h2 class="section-heading title">Verduras</h2>   
+            <p>¿Andas en búsqueda de las mejores verduras de la temporada? Pues has llegado al lugar indicado. En VeguitaClick nos aseguramos de ofrecer las verduras de mayor calidad del País.</p>
+            <p><a href="http://google.com">Más información</a></p>
+            </div>
+        </div>
+        <!-- Otros -->
+        <div class="row project">  	
+            <div class="col-lg-3 col-md-4 offset-lg-1">
+                <img class="img-fluid" src="{% static 'core/img/frutossecos.jpg' %}" alt="">
+            </div>
+            <div class="col-lg-7 col-md-8">
+                <h2 class="section-heading title">Otros</h2>   
+            <p>¿Andas bucando algo diferente? Pues te invitamos a echarle un vistazo a nuestra selección de semillas, abonos y productos para la agricultura.</p>
+            <p><a href="http://google.com">Más información</a></p>
+            </div>
+        </div>
+{% endblock %}
+
+

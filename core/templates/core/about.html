@@ -1,0 +1,27 @@
+{%  extends 'core/base.html' %}
+
+{% block title %}Acerca de{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/nosotros.jpg' %}{% endblock %}
+
+{% block headers %} 
+<h1>Acerca de</h1>
+
+{% endblock %}
+
+{% block content %} 
+<div class="row">
+    <div class="col-lg-3 col-md-4 offset-lg-1">
+        <img class="img-fluid avatar" src="{% static 'core/img/nosotros.jpg' %}" alt="">
+    </div>
+    <div class="col-lg-7 col-md-8">
+        <h2 class="section-heading">VeguitaClick</h2>   
+        <p>VeguitaClick es una empresa familiar con mas de 30 años de experiencia en el rubro de la distribución de frutas</p>
+        <p> y verduras a nivel nacional, nuestra casa matriz esta ubicada en el sector de Lo Valledor, Santiago de Chile.</p>
+        <p>Diariamente, abastecemos a mas de 50 empresas y casinos de alimentos con nuestros productos.</p>
+        <!-- Descripción: https://www.zaratefyv.cl/# -->
+    </div>
+</div>
+{% endblock %}
+
+
