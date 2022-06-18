@@ -7,12 +7,24 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+class Tipoalimento(models.Model):
+    idtipoalimento = models.BigAutoField(primary_key=True)
+    nomtipoalimento = models.CharField(max_length=150)
+    codtipoalimento = models.CharField(max_length=150, blank=True, null=True)
+
+    class Meta:
+
+        db_table = 'tipoalimento'
+
+    def __str__(self):
+        return self.nomtipoalimento
+
 
 class Alimento(models.Model):
-    idalimento = models.BigIntegerField(primary_key=True)
+    idalimento = models.BigAutoField(primary_key=True)
     nomalimento = models.CharField(max_length=100)
     codalimento = models.CharField(max_length=100, blank=True, null=True)
-    idtipoalimento = models.ForeignKey('Tipoalimento', models.DO_NOTHING, db_column='idtipoalimento')
+    idtipoalimento = models.ForeignKey('Tipoalimento', models.DO_NOTHING, db_column='idtipousuario')
     pesoalimento = models.DecimalField(max_digits=38, decimal_places=1, blank=True, null=True)
 
     class Meta:
@@ -147,16 +159,6 @@ class Proveedor(models.Model):
         db_table = 'proveedor'
 
 
-class Tipoalimento(models.Model):
-    idtipoalimento = models.BigIntegerField(primary_key=True)
-    nomtipoalimento = models.CharField(max_length=150)
-    codtipoalimento = models.CharField(max_length=150, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'tipoalimento'
-
-
 class Tipoempleado(models.Model):
     idtipoempleado = models.BigIntegerField(primary_key=True)
     nomtipoempleado = models.CharField(max_length=250)
@@ -181,8 +183,8 @@ class Tipousuario(models.Model):
     nomtipousuario = models.CharField(max_length=50)
 
     class Meta:
-
         db_table = 'tipousuario'
+
     def __str__(self):
         return self.nomtipousuario
 
