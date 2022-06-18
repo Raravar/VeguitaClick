@@ -47,3 +47,12 @@ def login(request):
         except Usuario.DoesNotExist as e:
             messages.success(request, 'Datos Incorrectos')
     return render(request, 'core/login.html')
+
+
+def cerrarSesion(request):
+    try:
+        del request.session['correousuario']
+    except:
+        return render(request, 'core/home.html')
+    return render(request, 'core/home.html')
+
