@@ -8,7 +8,7 @@ class UsuarioForm(ModelForm):
     class Meta:
         model = Usuario
          
-        fields = ['correousuario', 'Contraseña', 'nomusuario', 'apellidosusuario','idtipousuario']
+        fields = ['correousuario', 'contrasenausuario', 'nomusuario', 'apellidosusuario','idtipousuario']
 
         labels = {
             "correousuario": "Correo",

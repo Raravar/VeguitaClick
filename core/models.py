@@ -26,10 +26,14 @@ class Alimento(models.Model):
     codalimento = models.CharField(max_length=100, blank=True, null=True)
     idtipoalimento = models.ForeignKey('Tipoalimento', models.DO_NOTHING, db_column='idtipousuario')
     pesoalimento = models.DecimalField(max_digits=38, decimal_places=1, blank=True, null=True)
+    precioalimento = models.BigIntegerField()
 
     class Meta:
 
         db_table = 'alimento'
+
+    def __str__(self):
+        return {self.nomalimento}
 
 
 class AlmtoInv(models.Model):
