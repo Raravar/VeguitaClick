@@ -37,8 +37,8 @@ CREATE TABLE usuario (
     contrasenausuario          NVARCHAR2(20)  NOT NULL,
     nomusuario                 NVARCHAR2(100) NOT NULL,
     apellidosusuario           NVARCHAR2(500) NOT NULL,
-    estadousuario              NVARCHAR2(100) NOT NULL,
-    fecharegistrousuario       DATE NOT NULL,
+    estadousuario              NVARCHAR2(100),
+    fecharegistrousuario       DATE,
     idtipousuario			   INTEGER NOT NULL
 );
 

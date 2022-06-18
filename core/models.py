@@ -16,7 +16,7 @@ class Alimento(models.Model):
     pesoalimento = models.DecimalField(max_digits=38, decimal_places=1, blank=True, null=True)
 
     class Meta:
-        managed = False
+
         db_table = 'alimento'
 
 
@@ -25,26 +25,9 @@ class AlmtoInv(models.Model):
     idinventario = models.ForeignKey('Inventario', models.DO_NOTHING, db_column='idinventario')
 
     class Meta:
-        managed = False
+
         db_table = 'almto_inv'
         unique_together = (('idalimento', 'idinventario'),)
-
-
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128, blank=True, null=True)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150, blank=True, null=True)
-    first_name = models.CharField(max_length=150, blank=True, null=True)
-    last_name = models.CharField(max_length=150, blank=True, null=True)
-    email = models.CharField(max_length=254, blank=True, null=True)
-    is_staff = models.BooleanField()
-    is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user'
 
 
 class Compra(models.Model):
@@ -56,7 +39,7 @@ class Compra(models.Model):
     estadocompra = models.CharField(max_length=150)
 
     class Meta:
-        managed = False
+
         db_table = 'compra'
 
 
@@ -71,7 +54,7 @@ class Despacho(models.Model):
     idventa = models.ForeignKey('Venta', models.DO_NOTHING, db_column='idventa', blank=True, null=True)
 
     class Meta:
-        managed = False
+
         db_table = 'despacho'
 
 
@@ -84,7 +67,7 @@ class Detallecompra(models.Model):
     idalimento = models.ForeignKey(Alimento, models.DO_NOTHING, db_column='idalimento')
 
     class Meta:
-        managed = False
+
         db_table = 'detallecompra'
 
 
@@ -97,18 +80,8 @@ class Detalleventa(models.Model):
     idalimento = models.ForeignKey(Alimento, models.DO_NOTHING, db_column='idalimento')
 
     class Meta:
-        managed = False
+
         db_table = 'detalleventa'
-
-
-class DjangoContentType(models.Model):
-    app_label = models.CharField(max_length=100, blank=True, null=True)
-    model = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
 
 
 class EmpInv(models.Model):
@@ -116,7 +89,7 @@ class EmpInv(models.Model):
     idinventario = models.ForeignKey('Inventario', models.DO_NOTHING, db_column='idinventario')
 
     class Meta:
-        managed = False
+
         db_table = 'emp_inv'
         unique_together = (('idempleado', 'idinventario'),)
 
@@ -133,7 +106,7 @@ class Empleado(models.Model):
     idtipoempleado = models.ForeignKey('Tipoempleado', models.DO_NOTHING, db_column='idtipoempleado')
 
     class Meta:
-        managed = False
+
         db_table = 'empleado'
 
 
@@ -145,7 +118,7 @@ class Inventario(models.Model):
     precioconteoinventario = models.DecimalField(max_digits=38, decimal_places=2, blank=True, null=True)
 
     class Meta:
-        managed = False
+
         db_table = 'inventario'
 
 
@@ -154,7 +127,7 @@ class ProveAlmto(models.Model):
     idalimento = models.ForeignKey(Alimento, models.DO_NOTHING, db_column='idalimento')
 
     class Meta:
-        managed = False
+
         db_table = 'prove_almto'
         unique_together = (('idproveedor', 'idalimento'),)
 
@@ -170,7 +143,7 @@ class Proveedor(models.Model):
     dvrutproveedor = models.BigIntegerField()
 
     class Meta:
-        managed = False
+
         db_table = 'proveedor'
 
 
@@ -180,7 +153,7 @@ class Tipoalimento(models.Model):
     codtipoalimento = models.CharField(max_length=150, blank=True, null=True)
 
     class Meta:
-        managed = False
+
         db_table = 'tipoalimento'
 
 
@@ -190,7 +163,7 @@ class Tipoempleado(models.Model):
     salariotipoempleado = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+
         db_table = 'tipoempleado'
 
 
@@ -199,31 +172,33 @@ class Tipoproveedor(models.Model):
     nomtipoproveedor = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
-        managed = False
+
         db_table = 'tipoproveedor'
 
 
 class Tipousuario(models.Model):
-    idtipousuario = models.BigIntegerField(primary_key=True)
+    idtipousuario = models.BigAutoField(primary_key=True)
     nomtipousuario = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+
         db_table = 'tipousuario'
+    def __str__(self):
+        return self.nomtipousuario
 
 
 class Transporte(models.Model):
-    idtransporte = models.BigIntegerField(primary_key=True)
+    idtransporte = models.BigAutoField(primary_key=True)
     nomtransporte = models.CharField(max_length=250)
     idempleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='idempleado')
 
     class Meta:
-        managed = False
+
         db_table = 'transporte'
 
 
 class Usuario(models.Model):
-    idusuario = models.BigIntegerField(primary_key=True)
+    idusuario = models.BigAutoField(primary_key=True)
     correousuario = models.CharField(max_length=200)
     contrasenausuario = models.CharField(max_length=20)
     nomusuario = models.CharField(max_length=100)
@@ -233,7 +208,7 @@ class Usuario(models.Model):
     idtipousuario = models.ForeignKey(Tipousuario, models.DO_NOTHING, db_column='idtipousuario')
 
     class Meta:
-        managed = False
+
         db_table = 'usuario'
 
 
@@ -246,5 +221,5 @@ class Venta(models.Model):
     idempleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='idempleado')
 
     class Meta:
-        managed = False
+
         db_table = 'venta'
