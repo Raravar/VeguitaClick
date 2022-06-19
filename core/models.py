@@ -9,12 +9,13 @@ from django.db import models
 
 class Tipoalimento(models.Model):
     idtipoalimento = models.BigAutoField(primary_key=True)
-    nomtipoalimento = models.CharField(max_length=150)
-    codtipoalimento = models.CharField(max_length=150, blank=True, null=True)
+    nomtipoalimento = models.CharField(max_length=150, verbose_name="Nombre tipo alimento")
+    codtipoalimento = models.CharField(max_length=150, blank=True, null=True, verbose_name="Codigo tipo alimento")
 
     class Meta:
 
         db_table = 'tipoalimento'
+        verbose_name_plural = "Tipo Alimentos"
 
     def __str__(self):
         return self.nomtipoalimento
@@ -22,18 +23,18 @@ class Tipoalimento(models.Model):
 
 class Alimento(models.Model):
     idalimento = models.BigAutoField(primary_key=True)
-    nomalimento = models.CharField(max_length=100)
-    codalimento = models.CharField(max_length=100, blank=True, null=True)
-    idtipoalimento = models.ForeignKey('Tipoalimento', models.DO_NOTHING, db_column='idtipousuario')
-    pesoalimento = models.DecimalField(max_digits=38, decimal_places=1, blank=True, null=True)
-    precioalimento = models.BigIntegerField()
+    nomalimento = models.CharField(max_length=100, verbose_name="Nombre alimento")
+    codalimento = models.CharField(max_length=100, blank=True, null=True, verbose_name="Codigo alimento")
+    idtipoalimento = models.ForeignKey('Tipoalimento', models.DO_NOTHING, db_column='idtipousuario', verbose_name="Tipo alimento")
+    pesoalimento = models.DecimalField(max_digits=38, decimal_places=1, blank=True, null=True, verbose_name="Peso alimento")
+    precioalimento = models.BigIntegerField(verbose_name="Precio alimento")
 
     class Meta:
 
         db_table = 'alimento'
 
     def __str__(self):
-        return {self.nomalimento}
+        return self.nomalimento
 
 
 class AlmtoInv(models.Model):
@@ -81,9 +82,6 @@ class Detallecompra(models.Model):
     idcompra = models.ForeignKey(Compra, models.DO_NOTHING, db_column='idcompra')
     idproveedor = models.ForeignKey('Proveedor', models.DO_NOTHING, db_column='idproveedor')
     idalimento = models.ForeignKey(Alimento, models.DO_NOTHING, db_column='idalimento')
-
-    class Meta:
-        verbose_name_plural = "Proveedores"
 
     class Meta:
 
@@ -153,20 +151,20 @@ class ProveAlmto(models.Model):
 
 class Proveedor(models.Model):
     idproveedor = models.BigAutoField(primary_key=True)
-    nomproveedor = models.CharField(max_length=150)
-    telefproveedor = models.IntegerField(blank=True, null=True)
-    celuproveedor = models.IntegerField(blank=True, null=True)
-    direccionproveedor = models.CharField(max_length=500, blank=True, null=True)
-    idtipoproveedor = models.ForeignKey('Tipoproveedor', models.DO_NOTHING, db_column='idtipoproveedor')
-    rutproveedor = models.BigIntegerField()
-    dvrutproveedor = models.BigIntegerField()
+    nomproveedor = models.CharField(max_length=150, verbose_name="Nombre proveedor")
+    telefproveedor = models.IntegerField(blank=True, null=True, verbose_name="Telefono proveedor")
+    celuproveedor = models.IntegerField(blank=True, null=True, verbose_name="Celular proveedor")
+    direccionproveedor = models.CharField(max_length=500, blank=True, null=True, verbose_name="Direccion proveedor")
+    idtipoproveedor = models.ForeignKey('Tipoproveedor', models.DO_NOTHING, db_column='idtipoproveedor', verbose_name="Tipo proveedor")
+    rutproveedor = models.BigIntegerField(verbose_name="Rut provedor")
+    dvrutproveedor = models.BigIntegerField(verbose_name="Digito verificador proveedor")
 
-    class Meta:
-        verbose_name_plural = " Tipo Proveedores"
-
+    def __str__(self):
+        return self.nomproveedor
     class Meta:
 
         db_table = 'proveedor'
+        verbose_name_plural = "Proveedores"
 
 
 class Tipoempleado(models.Model):
@@ -181,11 +179,12 @@ class Tipoempleado(models.Model):
 
 class Tipoproveedor(models.Model):
     idtipoproveedor = models.BigAutoField(primary_key=True)
-    nomtipoproveedor = models.CharField(max_length=300, blank=True, null=True)
+    nomtipoproveedor = models.CharField(max_length=300, blank=True, null=True, verbose_name="Nombre tipo proveedor")
 
     class Meta:
 
         db_table = 'tipoproveedor'
+        verbose_name_plural = "Tipo Proveedores"
 
     def __str__(self):
         return self.nomtipoproveedor
@@ -193,10 +192,11 @@ class Tipoproveedor(models.Model):
 
 class Tipousuario(models.Model):
     idtipousuario = models.BigAutoField(primary_key=True)
-    nomtipousuario = models.CharField(max_length=50)
+    nomtipousuario = models.CharField(max_length=50, verbose_name="Nombre tipo usuario")
 
     class Meta:
         db_table = 'tipousuario'
+        verbose_name_plural = "Tipo Usuarios"
 
     def __str__(self):
         return self.nomtipousuario
@@ -214,17 +214,20 @@ class Transporte(models.Model):
 
 class Usuario(models.Model):
     idusuario = models.BigAutoField(primary_key=True)
-    correousuario = models.CharField(max_length=200)
+    correousuario = models.CharField(max_length=200, verbose_name="Correo usuario")
     Contraseña = models.CharField(max_length=20)
-    nomusuario = models.CharField(max_length=100)
-    apellidosusuario = models.CharField(max_length=500)
-    estadousuario = models.CharField(max_length=100, blank=True, null=True)
-    fecharegistrousuario = models.DateField(blank=True, null=True)
-    idtipousuario = models.ForeignKey(Tipousuario, models.DO_NOTHING, db_column='idtipousuario')
+    nomusuario = models.CharField(max_length=100, verbose_name="Nombre usuario")
+    apellidosusuario = models.CharField(max_length=500, verbose_name="Apellidos usuario")
+    estadousuario = models.CharField(max_length=100, blank=True, null=True, verbose_name="Estado usuario")
+    fecharegistrousuario = models.DateField(blank=True, null=True, verbose_name="Fecha registro usuario")
+    idtipousuario = models.ForeignKey(Tipousuario, models.DO_NOTHING, db_column='idtipousuario', verbose_name="Tipo usuario")
 
     class Meta:
 
         db_table = 'usuario'
+
+    def __str__(self):
+        return self.nomusuario
 
 
 class Venta(models.Model):
