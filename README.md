@@ -8,3 +8,4 @@ Sistema de gestión y ventas
 - 15/06/2022 Se Habilitó Inicio y fin de sesión
 - 16/06/2022 Se Habilitó Inicio y fin de sesión
 - 18/06/2022 Se Habilitó el Módulo de comrpas
+- 18/06/2022 Se ajustaron las dimensiones del carro de compras
