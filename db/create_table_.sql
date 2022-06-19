@@ -1,7 +1,7 @@
-----------------------------------------------
---Script de dropeo y creacion BD VeguitaClick
---Ultima modificacion: 10-06-2022
-----------------------------------------------
+------------------------------------------------------
+--Script de dropeo y creacion BD ORACLE VeguitaClick
+--Ultima modificacion: 18-06-2022
+------------------------------------------------------
 DROP TABLE TIPOUSUARIO CASCADE CONSTRAINTS;
 DROP TABLE USUARIO CASCADE CONSTRAINTS;
 DROP TABLE ALMTO_INV CASCADE CONSTRAINTS;
@@ -24,9 +24,11 @@ DROP TABLE VENTA CASCADE CONSTRAINTS;
 DROP SEQUENCE idtipoempleado;
 ----------------------------------------------
 
+
+
 CREATE TABLE tipousuario (
-    idtipousuario   INTEGER NOT NULL,
-    nomtipousuario  NVARCHAR2(50) NOT NULL
+    idtipousuario 		INTEGER NOT NULL,
+    nomtipousuario  	NVARCHAR2(50) NOT NULL
 );
 
 ALTER TABLE tipousuario ADD CONSTRAINT tipousuario_pk PRIMARY KEY ( idtipousuario );
@@ -49,7 +51,8 @@ CREATE TABLE alimento (
     nomalimento                  NVARCHAR2(100) NOT NULL,
     codalimento                  NVARCHAR2(100),
     idtipoalimento               INTEGER NOT NULL,
-    pesoalimento                 NUMBER(38, 1)
+    pesoalimento                 NUMBER(38, 1),
+	precioalimento				 NUMBER(38, 1)
 );
 
 ALTER TABLE alimento ADD CONSTRAINT alimento_pk PRIMARY KEY ( idalimento );
@@ -94,6 +97,14 @@ CREATE TABLE detallecompra (
     idproveedor            INTEGER NOT NULL,
     idalimento             INTEGER NOT NULL
 );
+
+CREATE TABLE tienda_producto (
+    id  		INTEGER NOT NULL,
+    nombre  	NVARCHAR2(64) NOT NULL,
+	precio  	NUMBER(38, 1) NOT NULL,
+	categoria	NVARCHAR2(64) NOT NULL
+);
+
 
 ALTER TABLE detallecompra ADD CONSTRAINT detallecompra_pk PRIMARY KEY ( iddetallecompra );
 

@@ -1,5 +1,34 @@
 --Comentarios
---Ultima modificacion: 03-06-2022
+--Ultima modificacion: 18-06-2022
+
+--Comentarios
+--Ultima modificacion: 18-06-2022
+
+--Tabla Tienda_Producto
+COMMENT ON COLUMN tienda_producto.nombre
+    IS 'Nombre del producto';
+COMMENT ON COLUMN tienda_producto.precio
+    IS 'Precio del producto';
+COMMENT ON COLUMN tienda_producto.categoria
+    IS 'Categoria del producto';
+    
+--Tabla TipoUsuario
+COMMENT ON COLUMN tipousuario.nomtipousuario
+    IS 'Nombre del tipo de usuario';
+    
+--Tabla Usuario
+COMMENT ON COLUMN usuario.correousuario
+    IS 'Correo del usuario';
+COMMENT ON COLUMN usuario.contrasenausuario
+    IS 'Contraseña del usuario';
+COMMENT ON COLUMN usuario.nomusuario
+    IS 'Nombres del usuario';
+COMMENT ON COLUMN usuario.apellidosusuario
+    IS 'Apellidos del usuario';
+COMMENT ON COLUMN usuario.estadousuario
+    IS 'Estado del usuario';
+COMMENT ON COLUMN usuario.fecharegistrousuario
+    IS 'Fecha en que se registra el usuario';
 
 --Tabla TipoAlimento
 COMMENT ON COLUMN tipoalimento.nomtipoalimento
