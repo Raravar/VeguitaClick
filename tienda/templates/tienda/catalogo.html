@@ -1,4 +1,4 @@
-{%  extends 'core/base.html' %}
+{% extends 'core/base.html' %}
 
 
 {% block background %}{% load static %}{% static 'core/img/fondoIngreso.png' %}{% endblock %}
@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12">
                 <div class="row" style="padding: 10px 0;">
                     <div class="col-12">
                         <div class="row">
@@ -20,7 +20,8 @@
                                         <h5 class="card-title">{{producto.nombre}}</h5>
                                         <p class="card-text">{{producto.categoria}}</p>
                                         <p class="card-text">{{producto.precio}}</p>
-                                        <a href="{% url 'Add' producto.id %}" class="btn btn-primary">Agregar al carrito</a>
+                                        <a href="{% url 'Add' producto.id %}" class="btn btn-primary">Agregar al
+                                            carrito</a>
                                     </div>
                                 </div>
                             </div>
@@ -28,8 +29,11 @@
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
-            <div class="col-4">
+            <div class="col-12">
+                <div class="col-lg-3 col-md-4 offset-lg-1" style="text-align: center;"></div>
+                <div class="row-8"></div>
                 {% include "tienda/carrito.html" %}
             </div>
         </div>
@@ -38,6 +42,7 @@
     <!-- Bootstrap -->
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
+
 </html>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"

@@ -83,6 +83,9 @@ class Detallecompra(models.Model):
     idalimento = models.ForeignKey(Alimento, models.DO_NOTHING, db_column='idalimento')
 
     class Meta:
+        verbose_name_plural = "Proveedores"
+
+    class Meta:
 
         db_table = 'detallecompra'
 
@@ -149,7 +152,7 @@ class ProveAlmto(models.Model):
 
 
 class Proveedor(models.Model):
-    idproveedor = models.BigIntegerField(primary_key=True)
+    idproveedor = models.BigAutoField(primary_key=True)
     nomproveedor = models.CharField(max_length=150)
     telefproveedor = models.IntegerField(blank=True, null=True)
     celuproveedor = models.IntegerField(blank=True, null=True)
@@ -159,12 +162,15 @@ class Proveedor(models.Model):
     dvrutproveedor = models.BigIntegerField()
 
     class Meta:
+        verbose_name_plural = " Tipo Proveedores"
+
+    class Meta:
 
         db_table = 'proveedor'
 
 
 class Tipoempleado(models.Model):
-    idtipoempleado = models.BigIntegerField(primary_key=True)
+    idtipoempleado = models.BigAutoField(primary_key=True)
     nomtipoempleado = models.CharField(max_length=250)
     salariotipoempleado = models.BigIntegerField(blank=True, null=True)
 
@@ -174,12 +180,15 @@ class Tipoempleado(models.Model):
 
 
 class Tipoproveedor(models.Model):
-    idtipoproveedor = models.BigIntegerField(primary_key=True)
+    idtipoproveedor = models.BigAutoField(primary_key=True)
     nomtipoproveedor = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
 
         db_table = 'tipoproveedor'
+
+    def __str__(self):
+        return self.nomtipoproveedor
 
 
 class Tipousuario(models.Model):
@@ -206,7 +215,7 @@ class Transporte(models.Model):
 class Usuario(models.Model):
     idusuario = models.BigAutoField(primary_key=True)
     correousuario = models.CharField(max_length=200)
-    contrasenausuario = models.CharField(max_length=20)
+    Contraseña = models.CharField(max_length=20)
     nomusuario = models.CharField(max_length=100)
     apellidosusuario = models.CharField(max_length=500)
     estadousuario = models.CharField(max_length=100, blank=True, null=True)

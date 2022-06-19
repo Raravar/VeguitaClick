@@ -40,7 +40,7 @@ def registro(request):
 def login(request):
     if request.method == 'POST':
         try:
-            detalleUsuario = Usuario.objects.get(correousuario=request.POST['correo'], contrasenausuario=request.POST['password'])
+            detalleUsuario = Usuario.objects.get(correousuario=request.POST['correo'], Contraseña =request.POST['password'])
             print("Usuario=", detalleUsuario)
             request.session['correousuario'] = detalleUsuario.correousuario
             return render(request, 'core/home.html')
