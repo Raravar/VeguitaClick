@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th scope="row" colspan="3" class="text-center">CARRITO</th>
+      <a>Bienvenido <a>{{request.session.correousuario}}</a></a>
     </tr>
     <tr>
       <th scope="col">NOMBRE</th>
@@ -44,5 +45,5 @@
 </div>
 <div class="row text-center">
     <div class="col-6"><a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar</a></div>
-    <div class="col-6"><a href="#" class="btn btn-success">Guardar</a></div>
+    <div class="col-6"><a href="{% url 'despacho' %}" class="btn btn-success">Continuar compra</a></div>
 </div>

@@ -192,11 +192,11 @@ class Tipoproveedor(models.Model):
 
 class Tipousuario(models.Model):
     idtipousuario = models.BigAutoField(primary_key=True)
-    nomtipousuario = models.CharField(max_length=50, verbose_name="Nombre tipo usuario")
+    nomtipousuario = models.CharField(max_length=50, verbose_name="Nombre tipo Cliente")
 
     class Meta:
         db_table = 'tipousuario'
-        verbose_name_plural = "Tipo Usuarios"
+        verbose_name_plural = "Tipo Cliente"
 
     def __str__(self):
         return self.nomtipousuario
@@ -204,27 +204,35 @@ class Tipousuario(models.Model):
 
 class Transporte(models.Model):
     idtransporte = models.BigAutoField(primary_key=True)
-    nomtransporte = models.CharField(max_length=250)
-    idempleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='idempleado')
+    nomtransporte = models.CharField(max_length=250, verbose_name="Nombre Transporte")
+    preciotransporte = models.IntegerField(verbose_name="Precio del transporte")
+    # idempleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='idempleado')
 
     class Meta:
 
         db_table = 'transporte'
+        verbose_name_plural = "Transportes"
+        verbose_name = "Transporte"
+
+    def __str__(self):
+        return self.nomtransporte
 
 
 class Usuario(models.Model):
     idusuario = models.BigAutoField(primary_key=True)
-    correousuario = models.CharField(max_length=200, verbose_name="Correo usuario")
+    correousuario = models.CharField(max_length=200, verbose_name="Correo cliente")
     Contraseña = models.CharField(max_length=20)
-    nomusuario = models.CharField(max_length=100, verbose_name="Nombre usuario")
-    apellidosusuario = models.CharField(max_length=500, verbose_name="Apellidos usuario")
-    estadousuario = models.CharField(max_length=100, blank=True, null=True, verbose_name="Estado usuario")
-    fecharegistrousuario = models.DateField(blank=True, null=True, verbose_name="Fecha registro usuario")
-    idtipousuario = models.ForeignKey(Tipousuario, models.DO_NOTHING, db_column='idtipousuario', verbose_name="Tipo usuario")
+    nomusuario = models.CharField(max_length=100, verbose_name="Nombre cliente")
+    apellidosusuario = models.CharField(max_length=500, verbose_name="Apellidos cliente")
+    estadousuario = models.CharField(max_length=100, blank=True, null=True, verbose_name="Estado cliente")
+    fecharegistrousuario = models.DateField(blank=True, null=True, verbose_name="Fecha registro cliente")
+    idtipousuario = models.ForeignKey(Tipousuario, models.DO_NOTHING, db_column='idtipousuario', verbose_name="Tipo cliente")
 
     class Meta:
 
         db_table = 'usuario'
+        verbose_name_plural = "Clientes"
+        verbose_name = "Cliente"
 
     def __str__(self):
         return self.nomusuario

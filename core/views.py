@@ -56,3 +56,5 @@ def cerrarSesion(request):
         return render(request, 'core/home.html')
     return render(request, 'core/home.html')
 
+def despacho(request):
+    return render(request, "core/despacho.html")
