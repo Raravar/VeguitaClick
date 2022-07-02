@@ -7,7 +7,7 @@ class DireccionForm(ModelForm):
     class Meta:
         model = Despacho
          
-        fields = ['comuna', 'idtransporte', 'nombrereceptor']
+        fields = ['direccion', 'comuna', 'idtransporte', 'nombrereceptor']
 
         labels = {
             "direccion": "Direccion",
