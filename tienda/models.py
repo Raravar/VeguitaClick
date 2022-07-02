@@ -53,3 +53,32 @@ class Despacho(models.Model):
         db_table = 'despacho'
         verbose_name_plural = "Despachos"
         verbose_name = "Despacho"
+
+class Productor(models.Model):
+    nombreproductor = models.CharField(max_length=6, primary_key=True, verbose_name="Nombre del productor")
+    telefonoproductor = models.IntegerField(verbose_name="Telefono del productor")
+
+    def __str__(self):
+        return self.nombreproductor  
+
+    class Meta:
+
+        db_table = 'productor'
+        verbose_name_plural = "Productores"
+        verbose_name = "Productor"
+
+class ProductoStock(models.Model):
+    idproductostock = models.BigAutoField(primary_key=True)
+    nombre = models.CharField(max_length=64)
+    categoria = models.CharField(max_length=32)
+    precio = models.IntegerField()
+    nombreproductor = models.ForeignKey(Transporte, models.DO_NOTHING, db_column='nombreproductor', verbose_name="Productor")
+
+    def __str__(self):
+        return f'{self.nombre} -> {self.precio}'
+
+    class Meta:
+
+        db_table = 'productosStock'
+        verbose_name_plural ="Productos en Stock"
+        verbose_name = "Producto en Stock"

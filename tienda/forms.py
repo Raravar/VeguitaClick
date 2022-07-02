@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Despacho
+from .models import Despacho, ProductoStock, Productor
 from django import forms
 from django.forms.forms import *
 
@@ -15,3 +15,16 @@ class DireccionForm(ModelForm):
             "idtransporte" : "Empresa de transporte",
             "nombrereceptor" : "Nombre de quien recibe la compra"
         }
+
+class ProductoresForm(ModelForm):
+    class Meta:
+        model = Productor
+         
+        fields = ['nombreproductor', 'telefonoproductor']
+
+        labels = {
+            "nombreproductor": "Nombre del productor",
+            "telefonoproductor" : "Telefono del productor",
+        }
+
+

@@ -2,8 +2,8 @@ from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 from tienda.Carrito import Carrito
-from tienda.models import Despacho, Producto
-from tienda.forms import DireccionForm
+from tienda.models import Despacho, Producto, Productor
+from tienda.forms import DireccionForm, ProductoresForm
 from django.contrib import messages
 
 
@@ -53,4 +53,49 @@ def misdespachos(request):
     despachos = Despacho.objects.all()
     return render(request, "tienda/misdespachos.html", {'despachos':despachos})
 
+def productores(request):
+    datos = {
+        'form' : ProductoresForm()
+    }
 
+    if request.method == 'POST':
+        formulario = ProductoresForm(request.POST)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje'] = "Guardados correctamente"
+
+    return render(request, 'tienda/productores.html', datos)
+
+def listaproductores(request):
+    productores = Productor.objects.all()
+    datos = {
+        "productores" : productores
+    }
+    return render(request, 'tienda/listaproductores.html', datos)
+
+
+def form_mod_productor(request, id):
+
+    productor = Productor.objects.get(nombreproductor=id)
+
+    datos = {
+        'form' : ProductoresForm(instance=productor)
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoresForm(request.POST, instance=productor)
+        if formulario.is_valid:
+            formulario.save()
+            datos['form'] = formulario
+            datos['mensaje'] = "Modificados correctamente"
+
+    return render(request, 'tienda/form_mod_productor.html', datos)
+
+
+def form_del_productor(request, id):
+
+    productor = Productor.objects.get(nombreproductor=id)
+
+    productor.delete()
+    
+    return redirect(to="listaproductores")
