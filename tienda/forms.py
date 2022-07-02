@@ -27,4 +27,16 @@ class ProductoresForm(ModelForm):
             "telefonoproductor" : "Telefono del productor",
         }
 
+class ProductosForm(ModelForm):
+    class Meta:
+        model = ProductoStock
+         
+        fields = ['nombre', 'categoria', 'nombreproductor']
+
+        labels = {
+            "nombre": "Nombre del producto",
+            "categoria" : "Categoría del producto",
+            "nombreproductor" : "Productor",
+        }
+
 

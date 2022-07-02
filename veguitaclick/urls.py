@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from core import views
 from tienda import views as tv
-from tienda.views import agregar_producto, eliminar_producto, restar_producto, limpiar_carrito, despacho, misdespachos, productores, listaproductores, form_mod_productor, form_del_productor
+from tienda.views import agregar_producto, eliminar_producto, restar_producto, limpiar_carrito, despacho, misdespachos, productores, listaproductores, form_mod_productor, form_del_productor, productosstock, stock
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -41,4 +41,7 @@ urlpatterns = [
     path('listaproductores', listaproductores, name="listaproductores"),
     path('form_mod_productor/<id>', form_mod_productor, name="form_mod_productor"),
     path('form_del_productor/<id>', form_del_productor, name="form_del_productor"),
+
+    path('productosstock', productosstock, name="productosstock"),
+    path('stock', stock, name="stock"),
 ]

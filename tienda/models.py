@@ -71,11 +71,10 @@ class ProductoStock(models.Model):
     idproductostock = models.BigAutoField(primary_key=True)
     nombre = models.CharField(max_length=64)
     categoria = models.CharField(max_length=32)
-    precio = models.IntegerField()
-    nombreproductor = models.ForeignKey(Transporte, models.DO_NOTHING, db_column='nombreproductor', verbose_name="Productor")
+    nombreproductor = models.ForeignKey(Productor, models.DO_NOTHING, db_column='nombreproductor', verbose_name="Productor")
 
     def __str__(self):
-        return f'{self.nombre} -> {self.precio}'
+        return self.nombre 
 
     class Meta:
 

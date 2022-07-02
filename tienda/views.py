@@ -2,8 +2,8 @@ from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 from tienda.Carrito import Carrito
-from tienda.models import Despacho, Producto, Productor
-from tienda.forms import DireccionForm, ProductoresForm
+from tienda.models import Despacho, Producto, Productor, ProductoStock
+from tienda.forms import DireccionForm, ProductoresForm, ProductosForm
 from django.contrib import messages
 
 
@@ -99,3 +99,26 @@ def form_del_productor(request, id):
     productor.delete()
     
     return redirect(to="listaproductores")
+
+
+#PRODUCTOS#
+def productosstock(request):
+    datos = {
+        'form' : ProductosForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ProductosForm(request.POST)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje'] = "Guardados correctamente"
+
+    return render(request, 'tienda/productosstock.html', datos)
+
+def stock(request):
+    productosstock = ProductoStock.objects.all()
+    datos = {
+        "productosstock" : productosstock
+    }
+    return render(request, 'tienda/stock.html', datos)
+
