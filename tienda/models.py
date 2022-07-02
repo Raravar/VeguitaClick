@@ -8,3 +8,12 @@ class Producto(models.Model):
 
     def __str__(self):
         return f'{self.nombre} -> {self.precio}'
+
+class Despacho(models.Model):
+    iddespacho = models.BigAutoField(primary_key=True)
+    direccion = models.CharField(max_length=64)
+    comuna = models.CharField(max_length=32)
+    
+
+    def __str__(self):
+        return self.direccion
