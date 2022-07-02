@@ -60,20 +60,6 @@ class Compra(models.Model):
         db_table = 'compra'
 
 
-class Despacho(models.Model):
-    iddespacho = models.BigIntegerField(primary_key=True)
-    nomdespacho = models.CharField(max_length=250, blank=True, null=True)
-    fechainicdespacho = models.DateField(blank=True, null=True)
-    fechafindespacho = models.DateField(blank=True, null=True)
-    estadodespacho = models.CharField(max_length=250, blank=True, null=True)
-    direcciondespacho = models.CharField(max_length=250, blank=True, null=True)
-    idtransporte = models.ForeignKey('Transporte', models.DO_NOTHING, db_column='idtransporte')
-    idventa = models.ForeignKey('Venta', models.DO_NOTHING, db_column='idventa', blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'despacho'
-
 
 class Detallecompra(models.Model):
     iddetallecompra = models.BigIntegerField(primary_key=True)
@@ -200,22 +186,6 @@ class Tipousuario(models.Model):
 
     def __str__(self):
         return self.nomtipousuario
-
-
-class Transporte(models.Model):
-    idtransporte = models.BigAutoField(primary_key=True)
-    nomtransporte = models.CharField(max_length=250, verbose_name="Nombre Transporte")
-    preciotransporte = models.IntegerField(verbose_name="Precio del transporte")
-    # idempleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='idempleado')
-
-    class Meta:
-
-        db_table = 'transporte'
-        verbose_name_plural = "Transportes"
-        verbose_name = "Transporte"
-
-    def __str__(self):
-        return self.nomtransporte
 
 
 class Usuario(models.Model):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario,Tipousuario, Tipoalimento, Alimento,  Tipoproveedor, Proveedor, Transporte
+from .models import Usuario,Tipousuario, Tipoalimento, Alimento,  Tipoproveedor, Proveedor
 # Register your models here.
 
 admin.site.register(Usuario)
@@ -8,4 +8,3 @@ admin.site.register(Tipoalimento)
 admin.site.register(Alimento)
 admin.site.register(Tipoproveedor)
 admin.site.register(Proveedor)
-admin.site.register(Transporte)

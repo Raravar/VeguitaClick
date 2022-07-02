@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 from tienda.Carrito import Carrito
-from tienda.models import Producto
+from tienda.models import Despacho, Producto
 from tienda.forms import DireccionForm
 from django.contrib import messages
 
@@ -10,7 +10,6 @@ from django.contrib import messages
 
 
 def catalogo(request):
-    #return HttpResponse("Hola Pythonizando")
     productos = Producto.objects.all()
     return render(request, "tienda/catalogo.html", {'productos':productos})
 
@@ -37,6 +36,8 @@ def limpiar_carrito(request):
     carrito.limpiar()
     return redirect("catalogo")
 
+
+
 def despacho(request):
     datos = {'form': DireccionForm()}
 
@@ -44,6 +45,12 @@ def despacho(request):
         formulario = DireccionForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            datos['mensaje'] = "Guardados correctamente"
+            datos['mensaje'] = "Despacho guardado correctamente"
 
     return render(request, 'tienda/despacho.html', datos)
+
+def misdespachos(request):
+    despachos = Despacho.objects.all()
+    return render(request, "tienda/misdespachos.html", {'despachos':despachos})
+
+

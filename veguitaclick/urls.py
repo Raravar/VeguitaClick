@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from core import views
 from tienda import views as tv
-from tienda.views import agregar_producto, eliminar_producto, restar_producto, limpiar_carrito, despacho 
+from tienda.views import agregar_producto, eliminar_producto, restar_producto, limpiar_carrito, despacho, misdespachos
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -36,4 +36,5 @@ urlpatterns = [
     path('restar/<int:producto_id>/', restar_producto, name="Sub"),
     path('limpiar/', limpiar_carrito, name="CLS"),
     path('despacho/', tv.despacho, name="despacho"),
+    path('misdespachos/', tv.misdespachos, name="misdespachos"),
 ]
